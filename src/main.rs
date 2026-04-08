@@ -26,13 +26,13 @@ fn main() -> Result<(), Error> {
 
     match ureq::get(url).call() {
         Ok(mut response) => {
-            println!("{}", response.body_mut().read_to_string()?)
+            println!("{}", response.body_mut().read_to_string()?);
         },
         Err(Error::StatusCode(code)) => {
-            panic!("Server error, code: {}", code)
+            panic!("Server error, code: {code}");
         }
         Err(error) => {
-            panic!("Unable to retrieve citation: {}", error)
+            panic!("Unable to retrieve citation: {error}");
         }
     }
 
