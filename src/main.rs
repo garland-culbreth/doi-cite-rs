@@ -25,8 +25,8 @@ fn main() -> Result<(), Error> {
     );
 
     match ureq::get(url).call() {
-        Ok(mut response) => {
-            println!("{}", response.body_mut().read_to_string()?);
+        Ok(res) => {
+            println!("{}", res.into_body().read_to_string()?);
         }
         Err(error) => {
             panic!("Unable to retrieve citation: {error}");
