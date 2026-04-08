@@ -28,9 +28,6 @@ fn main() -> Result<(), Error> {
         Ok(mut response) => {
             println!("{}", response.body_mut().read_to_string()?);
         }
-        Err(Error::StatusCode(code)) => {
-            panic!("Server error, code: {code}");
-        }
         Err(error) => {
             panic!("Unable to retrieve citation: {error}");
         }
